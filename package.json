@@ -1,0 +1,28 @@
+{
+  "name": "reformas-mx-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monitor de reformas legales mexicanas — DOF, Cámara de Diputados, Periódicos Estatales",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others --raw --names API,WEB,PB \"npm run dev --prefix apps/api\" \"npm run dev --prefix apps/web\" \"npm run dev --prefix apps/pocketbase\"",
+    "dev:api": "npm run dev --prefix apps/api",
+    "dev:web": "npm run dev --prefix apps/web",
+    "build": "npm run build --prefix apps/web",
+    "build:production": "NODE_ENV=production npm run build --prefix apps/web",
+    "start": "concurrently --kill-others --raw --names API,PB \"npm run start --prefix apps/api\" \"npm run start --prefix apps/pocketbase\"",
+    "start:production": "NODE_ENV=production npm run start",
+    "install:all": "npm install && npm install --prefix apps/api && npm install --prefix apps/web && npm install --prefix apps/pocketbase",
+    "lint": "concurrently --raw \"npm run lint --prefix apps/web\" \"npm run lint --prefix apps/api\"",
+    "clean": "rm -rf node_modules apps/api/node_modules apps/web/node_modules dist"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}

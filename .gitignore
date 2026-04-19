@@ -1,0 +1,50 @@
+# =============================================
+# .gitignore — Reformas MX Monorepo
+# =============================================
+
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Variables de entorno (NUNCA al repositorio)
+.env
+.env.local
+.env.production
+.env.*.local
+**/.env
+**/.env.local
+**/.env.production
+
+# Build outputs
+dist/
+**/dist/
+build/
+
+# PocketBase datos
+apps/pocketbase/pb_data/
+apps/pocketbase/pocketbase
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor
+.vscode/settings.json
+.idea/
+*.suo
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporales
+*.tmp
+*.temp
+.cache/
+
+# Coverage
+coverage/
+.nyc_output/
