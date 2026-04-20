@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    
+    --primary: 224 76% 48%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 220 13% 95%;
+    --secondary-foreground: 222 47% 11%;
+    
+    --muted: 220 13% 95%;
+    --muted-foreground: 215 16% 47%;
+    
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 100%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 76% 48%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+    
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 224 76% 48%;
+    --accent-foreground: 210 40% 98%;
+    
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 210 40% 98%;
+  }
+}
+
+@layer base {
+  body {
+    font-family: "DM Sans", sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    overflow-x: hidden;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Lora", serif;
+    text-wrap: balance;
+    color: hsl(var(--primary));
+  }
+
+  p {
+    font-variant-numeric: tabular-nums;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+  }
+}
+
+@layer components {
+  /* Filter Sidebar specific styling as requested */
+  .filter-box {
+    @apply bg-card border-2 rounded-2xl p-6 shadow-sm flex flex-col gap-6;
+  }
+  
+  .filter-label {
+    @apply text-sm font-bold tracking-wider text-foreground/80 mb-2 block uppercase;
+  }
+  
+  .filter-input-styled {
+    @apply w-full border-2 border-border rounded-lg px-4 py-2.5 bg-background text-foreground focus:outline-none focus:ring-0 focus:border-primary transition-colors;
+  }
+  
+  .filter-button-primary {
+    @apply w-full bg-primary text-primary-foreground hover:brightness-110 font-bold py-3 rounded-lg shadow-sm transition-all active:scale-[0.98];
+  }
+  
+  .filter-button-secondary {
+    @apply w-full border-2 border-border bg-transparent text-foreground hover:bg-muted font-bold py-3 rounded-lg transition-all active:scale-[0.98];
+  }
+}
+
+/* Print Styles */
+@media print {
+  @page {
+    margin: 2cm;
+    size: auto;
+  }
+
+  body {
+    background-color: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+
+  .no-print, 
+  header, 
+  footer, 
+  button,
+  .toast-viewport {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  .reforma-content {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+  }
+
+  h1 {
+    font-size: 24pt !important;
+    color: black !important;
+    page-break-after: avoid;
+    margin-bottom: 1rem !important;
+  }
+
+  h2, h3, h4 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  p, li {
+    page-break-inside: avoid;
+    color: black !important;
+    orphans: 3;
+    widows: 3;
+  }
+
+  .print-metadata {
+    border-bottom: 2px solid #000 !important;
+    padding-bottom: 1rem !important;
+    margin-bottom: 2rem !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    font-size: 10pt !important;
+  }
+
+  .print-metadata-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+  }
+
+  .print-metadata-label {
+    font-weight: bold !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  .prose {
+    max-width: 100% !important;
+  }
+}
+
+.print-only {
+  display: none;
+}

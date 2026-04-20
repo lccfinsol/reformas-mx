@@ -1,0 +1,40 @@
+# Dependencias
+node_modules/
+**/node_modules/
+
+# Variables de entorno — NUNCA subir al repositorio
+.env
+.env.local
+.env.production
+.env.*.local
+**/.env
+**/.env.local
+**/.env.production
+
+# Build outputs
+dist/
+**/dist/
+build/
+
+# PocketBase datos y binario
+apps/pocketbase/pb_data/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/settings.json
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporales
+*.tmp
+.cache/
+
+# Coverage
+coverage/

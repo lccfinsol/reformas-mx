@@ -1,0 +1,23 @@
+{
+  "name": "reformas-mx-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monitor de reformas legales mexicanas",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others --raw --names API,WEB,PB \"npm run dev --prefix apps/api\" \"npm run dev --prefix apps/web\" \"npm run dev --prefix apps/pocketbase\"",
+    "build": "npm run build --prefix apps/web",
+    "start": "concurrently --kill-others --raw --names API,PB \"npm run start --prefix apps/api\" \"npm run start --prefix apps/pocketbase\"",
+    "install:all": "npm install && npm install --prefix apps/api && npm install --prefix apps/web",
+    "lint": "concurrently --raw \"npm run lint --prefix apps/web\" \"npm run lint --prefix apps/api\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
